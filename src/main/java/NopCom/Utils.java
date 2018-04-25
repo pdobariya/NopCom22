@@ -7,7 +7,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -73,6 +77,12 @@ public class Utils extends BasePage {
         }finally {
 
         }
+    }
+    public static void takeFullScreenShotWithUrl(String screenShotName)throws Exception{
+        Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
+        ImageIO.write(screenshot.getImage(),"PNG",new File("screenshot\\" + screenShotName + ".png"));
+        System.out.println("Full Screenshot has been taken");
+
     }
 
 
