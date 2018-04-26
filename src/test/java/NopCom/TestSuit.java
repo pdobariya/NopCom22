@@ -8,6 +8,11 @@ public class TestSuit extends BaseTest{
     HomePage homePage = new HomePage();
     String ExpectedElectronicResult = "Electronics";
     String ExpectedJewelryResult = "Jewelry";
+     @Test
+    public void openHomePage(){
+        homePage.openHomePage();
+        Assert.assertEquals(driver.findElement(By.xpath("//h2[contains(., 'Welcome to our store')]")).getText(),"Welcome to our store");
+    }
 
     @Test
     public void electronicPage(){
